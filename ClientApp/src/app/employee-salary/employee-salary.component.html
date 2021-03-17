@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Employee Salary</h1>
+
+<p *ngIf="!employeeSalaries"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employeeSalaries">
+  <thead>
+    <tr>
+      <th>Employee Name</th>
+      <th>Salary</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employeeSalaries">
+      <td>{{ emp.EmpSal_EmployeeName }}</td>
+      <td>{{ emp.EmpSal_Salary }}</td>
+      <td>{{ emp.EmpSal_StartDate }}</td>
+      <td>{{ emp.EmpSal_EndDate }}</td>
+      <td>{{ emp.EmpSal_Id }}</td>
+    </tr>
+  </tbody>
+</table>
