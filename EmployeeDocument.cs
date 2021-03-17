@@ -12,30 +12,12 @@ namespace employee_angular
     public class EmployeeDocument
     {
         #region Properties
-        [Display(Name = "Id")]
-        [Key]
         public decimal EmpDoc_Id { get; set; }
-
-        [Display(Name = "Employee")]
-        [Required(ErrorMessage = "Employee is required")]
         public decimal EmpDoc_Employee { get; set; }
-
-        [Display(Name = "Employee Name")]
         public string EmpDoc_EmployeeName { get; set; }
-
-        [Display(Name = "Document Type")]
-        [Required(ErrorMessage = "Document Type is required")]
         public decimal EmpDoc_Type { get; set; }
-
-        [Display(Name = "Document Type")]
         public string EmpDoc_TypeName { get; set; }
-
-        [Display(Name = "Document")]
         public string EmpDoc_File { get; set; }
-
-        public IFormFile EmpDoc_FileUpload { get; set; }
-
-        [Display(Name = "Status")]
         public int EmpDoc_Status { get; set; }
         #endregion
 

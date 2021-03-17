@@ -13,29 +13,11 @@ namespace employee_angular
     public class Employee
     {
         #region Properties
-        [Display(Name = "Id")]
-        [Key]
         public decimal Emp_Id { get; set; }
-
-        [Display(Name = "Employee Name")]
-        [Required(ErrorMessage = "Name is required")]
         public string Emp_Name { get; set; }
-
-        [Display(Name = "Date of Birth")]
-        [Required(ErrorMessage = "Date of Birth is required")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [DataType(DataType.Date)]
         public DateTime Emp_DOB { get; set; }
-
-        [Display(Name = "Department")]
-        //[Required(ErrorMessage = "Department is required")]
-        [Required(ErrorMessage = "{0} is required.")]
         public decimal Emp_Department { get; set; }
-
-        [Display(Name = "Department")]
         public string Emp_DepartmentName { get; set; }
-
-        [Display(Name = "Status")]
         public int Emp_Status { get; set; }
         #endregion
 

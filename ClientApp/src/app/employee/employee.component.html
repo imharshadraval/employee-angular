@@ -10,15 +10,28 @@
       <th>Department</th>
       <th>Status</th>
       <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let emp of employees">
-      <td>{{ emp.Emp_Name }}</td>
-      <td>{{ emp.Emp_DOB }}</td>
-      <td>{{ emp.Emp_DepartmentName }}</td>
-      <td>{{ emp.Emp_Status }}</td>
-      <td>{{ emp.Emp_Id }}</td>
+      <td>{{ emp.emp_Name }}</td>
+      <td>{{ emp.emp_DOB | date: 'dd/MM/yyyy'}}</td>
+      <td>{{ emp.emp_DepartmentName }}</td>
+      <td>
+        <span *ngIf="(emp.emp_Status == 1)">Active</span>
+        <span *ngIf="(emp.emp_Status == 0)">Inactive</span>
+      </td>
+      <td>
+        <a [attr.href]="emp.emp_Id">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a [attr.href]="emp.emp_Id">
+          Delete
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>

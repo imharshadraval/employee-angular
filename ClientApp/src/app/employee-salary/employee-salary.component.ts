@@ -16,10 +16,10 @@ export class EmployeeSalaryComponent {
 }
 
 interface EmployeeSalary {
-  EmpSal_Id: number;
-  EmpSal_Employee: number;
-  EmpSal_EmployeeName: string;
-  EmpSal_Salary: number;
-  EmpSal_StartDate: string;
-  EmpSal_EndDate: string;
+  empSal_Id: number;
+  empSal_Employee: number;
+  empSal_EmployeeName: string;
+  empSal_Salary: number;
+  empSal_StartDate: string;
+  empSal_EndDate: string;
 }

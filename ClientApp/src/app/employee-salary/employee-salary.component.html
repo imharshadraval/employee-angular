@@ -10,15 +10,25 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let emp of employeeSalaries">
-      <td>{{ emp.EmpSal_EmployeeName }}</td>
-      <td>{{ emp.EmpSal_Salary }}</td>
-      <td>{{ emp.EmpSal_StartDate }}</td>
-      <td>{{ emp.EmpSal_EndDate }}</td>
-      <td>{{ emp.EmpSal_Id }}</td>
+      <td>{{ emp.empSal_EmployeeName }}</td>
+      <td>{{ emp.empSal_Salary }}</td>
+      <td>{{ emp.empSal_StartDate  | date: 'dd/MM/yyyy'}}</td>
+      <td>{{ emp.empSal_EndDate  | date: 'dd/MM/yyyy'}}</td>
+      <td>
+        <a [attr.href]="emp.empSal_Id">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a [attr.href]="emp.empSal_Id">
+          Delete
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -16,9 +16,9 @@ export class EmployeeComponent {
 }
 
 interface Employee {
-  Emp_Name: string;
-  Emp_DOB: string;
-  Emp_DepartmentName: string;
-  Emp_Status: number;
-  Emp_Id: number;
+  emp_Name: string;
+  emp_DOB: string;
+  emp_DepartmentName: string;
+  emp_Status: number;
+  emp_Id: number;
 }

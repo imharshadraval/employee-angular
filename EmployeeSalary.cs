@@ -11,31 +11,11 @@ namespace employee_angular
     public class EmployeeSalary
     {
         #region Properties
-        [Display(Name = "Id")]
-        [Key]
         public decimal EmpSal_Id { get; set; }
-
-        [Display(Name = "Employee")]
-        [Required(ErrorMessage = "Employee is required")]
         public decimal EmpSal_Employee { get; set; }
-
-        [Display(Name = "Employee Name")]
         public string EmpSal_EmployeeName { get; set; }
-
-        [Display(Name = "Salary")]
-        [Required(ErrorMessage = "Salary is required")]
         public decimal EmpSal_Salary { get; set; }
-
-        [Display(Name = "Start Date")]
-        [Required(ErrorMessage = "Start Date is required")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [DataType(DataType.Date)]
         public DateTime EmpSal_StartDate { get; set; }
-
-        [Display(Name = "End Date")]
-        [Required(ErrorMessage = "End Date is required")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [DataType(DataType.Date)]
         public DateTime EmpSal_EndDate { get; set; }
         #endregion
 

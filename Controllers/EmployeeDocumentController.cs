@@ -54,16 +54,11 @@ namespace employee_angular.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (obj.EmpDoc_FileUpload != null)
+                    if (obj.EmpDoc_File != null)
                     {
-                        string fileName = DateTime.Now.ToString("ddMMyyyyhhmmsstt") + "_" + Path.GetFileName(obj.EmpDoc_FileUpload.FileName);
+                        string fileName = DateTime.Now.ToString("ddMMyyyyhhmmsstt") + "_" + Path.GetFileName(obj.EmpDoc_File);
                         fileName = Regex.Replace(fileName, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
                         string filePath = Path.Combine("~/Uploads/Documents/", fileName);
-                        //string filePath = Path.GetTempFileName();
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            obj.EmpDoc_FileUpload.CopyTo(stream);
-                        }
                         obj.EmpDoc_File = "~/Uploads/Documents/" + fileName;
                     }
                     else
@@ -106,14 +101,13 @@ namespace employee_angular.Controllers
                     if (obj != null)
                     {
                         obj = employeeDocument;
-                        if (obj.EmpDoc_FileUpload != null)
+                        if (obj.EmpDoc_File != null)
                         {
                             var webRoot = _env.WebRootPath;
                             var oldfileName = System.IO.Path.Combine(webRoot, obj.EmpDoc_File);
-                            string fileName = DateTime.Now.ToString("ddMMyyyyhhmmsstt") + "_" + Path.GetFileName(obj.EmpDoc_FileUpload.FileName);
+                            string fileName = DateTime.Now.ToString("ddMMyyyyhhmmsstt") + "_" + Path.GetFileName(obj.EmpDoc_File);
                             fileName = Regex.Replace(fileName, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
                             string path = Path.Combine(webRoot, fileName);
-                            //obj.EmpDoc_FileUpload.SaveAs(path);
                             obj.EmpDoc_File = "~/Uploads/Documents/" + fileName;
 
                             if (System.IO.File.Exists(oldfileName))

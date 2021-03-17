@@ -10,15 +10,32 @@
       <th>Document</th>
       <th>Status</th>
       <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let emp of employeeDocuments">
-      <td>{{ emp.EmpSal_EmployeeName }}</td>
-      <td>{{ emp.EmpSal_Salary }}</td>
-      <td>{{ emp.EmpSal_StartDate }}</td>
-      <td>{{ emp.EmpSal_EndDate }}</td>
-      <td>{{ emp.EmpSal_Id }}</td>
+      <td>{{ emp.empDoc_EmployeeName }}</td>
+      <td>{{ emp.empDoc_TypeName }}</td>
+      <td>
+        <a [attr.href]="emp.empDoc_File">
+          View
+        </a>
+      </td>
+      <td>
+        <span *ngIf="(emp.empDoc_Status == 1)">Active</span>
+        <span *ngIf="(emp.empDoc_Status == 0)">Inactive</span>
+      </td>
+      <td>
+        <a [attr.href]="emp.empDoc_Id">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a [attr.href]="emp.empDoc_Id">
+          Delete
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>

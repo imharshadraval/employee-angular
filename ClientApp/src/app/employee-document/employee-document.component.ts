@@ -16,11 +16,11 @@ export class EmployeeDocumentComponent {
 }
 
 interface EmployeeDocument {
-  EmpDoc_Id: number;
-  EmpDoc_Employee: number;
-  EmpDoc_EmployeeName: string;
-  EmpDoc_Type: number;
-  EmpDoc_TypeName: string;
-  EmpDoc_File: string;
-  EmpDoc_Status: number;
+  empDoc_Id: number;
+  empDoc_Employee: number;
+  empDoc_EmployeeName: string;
+  empDoc_Type: number;
+  empDoc_TypeName: string;
+  empDoc_File: string;
+  empDoc_Status: number;
 }
