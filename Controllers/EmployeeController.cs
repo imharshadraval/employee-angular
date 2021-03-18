@@ -7,98 +7,42 @@ using Microsoft.Extensions.Configuration;
 
 namespace employee_angular.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [ApiController] 
     public class EmployeeController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        [Route("Employee")]
+        public IEnumerable<Employee> Index()
         {
-            return View(Employee.List(2));
-        }
-
-        public ActionResult Create()
-        {
-            ViewData["Department"] = CommonConstant.BindDepartment();
-            ViewData["Status"] = CommonConstant.BindStatus();
-            return View();
+            return Employee.List(2);
         }
 
         [HttpPost]
-        public ActionResult Create(Employee obj)
+        [Route("Employee/Create")]
+        public decimal Create(Employee employee)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    Employee.Add(obj);
-                    ViewBag.Message = "Employee Added Successfully";
-                    return RedirectToAction("Index");
-                }
-                else
-                    return View();
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-        public ActionResult Edit(decimal id)
-        {
-            ViewData["Department"] = CommonConstant.BindDepartment();
-            ViewData["Status"] = CommonConstant.BindStatus();
-            Employee obj = Employee.Find(id);
-            if (obj != null)
-                return View(obj);
-            else
-                return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Edit(decimal id, Employee employee)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    Employee obj = Employee.Find(id);
-                    if (obj != null)
-                    {
-                        obj = employee;
-                        Employee.Update(obj);
-                        ViewBag.Message = "Employee Updated Successfully";
-                    }
-                    return RedirectToAction("Index");
-                }
-                else
-                    return View();
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-        public ActionResult Delete(decimal id)
-        {
-            try
-            {
-                Employee.Delete(id);
-                EmployeeSalary.DeleteByEmployee(id);
-                EmployeeDocument.DeleteByEmployee(id);
-                ViewBag.Message = "Employee Deleted Successfully";
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
+            return Employee.Add(employee);
         }
 
         [HttpGet]
-        public IEnumerable<Employee> Get()
+        [Route("Employee/Find/{id}")]
+        public Employee Find(decimal id)
         {
-            return Employee.List(2).ToArray();
+            return Employee.Find(id);
+        }
+
+        [HttpPut]
+        [Route("Employee/Edit")]
+        public int Edit(Employee employee)
+        {
+            return Employee.Update(employee);
+        }
+
+        [HttpDelete]
+        [Route("Employee/Delete/{id}")]
+        public int Delete(decimal id)
+        {
+            return Employee.Delete(id);
         }
     }
 }

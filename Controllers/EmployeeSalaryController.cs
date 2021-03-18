@@ -8,121 +8,55 @@ using Microsoft.AspNetCore.Mvc;
 namespace employee_angular.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class EmployeeSalaryController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        [Route("EmployeeSalary")]
+        public IEnumerable<EmployeeSalary> Index()
         {
-            return View(EmployeeSalary.List());
+            return EmployeeSalary.List();
+        }
+
+        [HttpPost]
+        [Route("EmployeeSalary/Create")]
+        public decimal Create(EmployeeSalary employee)
+        {
+            return EmployeeSalary.Add(employee);
         }
 
         [HttpGet]
-        public IEnumerable<EmployeeSalary> Get()
+        [Route("EmployeeSalary/Find/{id}")]
+        public EmployeeSalary Find(decimal id)
         {
-            return EmployeeSalary.List().ToArray();
+            return EmployeeSalary.Find(id);
         }
 
-        public ActionResult Create(decimal? id)
+        [HttpGet]
+        [Route("EmployeeSalary/FindByEmployee/{id}")]
+        public IEnumerable<EmployeeSalary> FindByEmployee(decimal id)
         {
-            ViewData["Employee"] = Employee.ListEmployee(1);
-            if (id != null)
-            {
-                ViewData["CurrEmployee"] = id;
-            }
-            else
-            {
-                ViewData["CurrEmployee"] = string.Empty;
-            }
-            return View();
+            return EmployeeSalary.FindByEmployee(id);
         }
 
-        [HttpPost]
-        public ActionResult Create(EmployeeSalary obj)
+        [HttpPut]
+        [Route("EmployeeSalary/Edit")]
+        public int Edit(EmployeeSalary employee)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    EmployeeSalary.Add(obj);
-                    ViewBag.Message = "Employee Salary Added Successfully";
-                    return RedirectToAction("Index");
-                }
-                else
-                    return View();
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
+            return EmployeeSalary.Update(employee);
         }
 
-        public ActionResult Edit(decimal id)
+        [HttpDelete]
+        [Route("EmployeeSalary/Delete/{id}")]
+        public int Delete(decimal id)
         {
-            ViewData["Employee"] = Employee.ListEmployee(1);
-            EmployeeSalary obj = EmployeeSalary.Find(id);
-            if (obj != null)
-                return View(obj);
-            else
-                return RedirectToAction("Index");
+            return EmployeeSalary.Delete(id);
         }
 
-        [HttpPost]
-        public ActionResult Edit(decimal id, EmployeeSalary employeeSalary)
+        [HttpDelete]
+        [Route("EmployeeSalary/DeleteByEmployee/{id}")]
+        public int DeleteByEmployee(decimal id)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    EmployeeSalary obj = EmployeeSalary.Find(id);
-                    if (obj != null)
-                    {
-                        obj = employeeSalary;
-                        EmployeeSalary.Update(obj);
-                        ViewBag.Message = "Employee Salary Updated Successfully";
-                    }
-                    return RedirectToAction("Index");
-                }
-                else
-                    return View();
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-        public ActionResult Delete(decimal id)
-        {
-            try
-            {
-                EmployeeSalary.Delete(id);
-                ViewBag.Message = "Employee Salary Deleted Successfully";
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-        public ActionResult DeleteByEmployee(decimal id)
-        {
-            try
-            {
-                EmployeeSalary.DeleteByEmployee(id);
-                ViewBag.Message = "Employee Salary Deleted Successfully";
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-        public ActionResult List(decimal id)
-        {
-            ViewData["EmpId"] = id;
-            return View(EmployeeSalary.FindByEmployee(id));
+            return EmployeeSalary.DeleteByEmployee(id);
         }
     }
 }
