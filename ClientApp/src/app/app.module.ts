@@ -32,7 +32,7 @@ import { EmployeeDocumentComponent } from './employee-document/employee-document
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'employees', component: EmployeeComponent },
+      { path: 'employee-list', component: EmployeeComponent },
       { path: 'employee-salary', component: EmployeeSalaryComponent },
       { path: 'employee-document', component: EmployeeDocumentComponent },
     ])

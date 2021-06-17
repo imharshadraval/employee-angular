@@ -20,17 +20,19 @@
       <td>{{ emp.emp_DepartmentName }}</td>
       <td>
         <span *ngIf="(emp.emp_Status == 1)">Active</span>
-        <span *ngIf="(emp.emp_Status == 0)">Inactive</span>
+        <span *ngIf="(emp.emp_Status == 0)" style="color:red;">Inactive</span>
       </td>
       <td>
-        <a [attr.href]="emp.emp_Id">
+        <!--<a [attr.href]="emp.emp_Id">
           Edit
-        </a>
+        </a>-->
+        <button type="button" id="btn_Edit" class="btn btn-success" ng-click="EditEmp(emp.emp_Id)"><i class="fa fa-edit"></i>Edit</button>
       </td>
       <td>
-        <a [attr.href]="emp.emp_Id">
+        <!--<a [attr.href]="emp.emp_Id">
           Delete
-        </a>
+        </a>-->
+        <button type="button" id="btn_Delete" class="btn btn-danger" ng-click="DeleteEmp(emp.emp_Id)"><i class="fa fa-trash-o"></i>Delete</button>
       </td>
     </tr>
   </tbody>

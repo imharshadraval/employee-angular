@@ -11,6 +11,8 @@
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <RootNamespace>employee_angular</RootNamespace>
+    <Authors>Harshad Raval</Authors>
+    <Copyright>(C) Harshad Raval 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

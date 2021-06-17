@@ -18,23 +18,26 @@
       <td>{{ emp.empDoc_EmployeeName }}</td>
       <td>{{ emp.empDoc_TypeName }}</td>
       <td>
-        <a [attr.href]="emp.empDoc_File">
+        <!--<a [attr.href]="emp.empDoc_File" [attr.target]="_blank">
           View
-        </a>
+        </a>-->
+        <button type="button" id="btn_View" class="btn btn-primary" ng-click="ViewDoc(emp.empDoc_File)"><i class="fa fa-eye"></i>View</button>
       </td>
       <td>
         <span *ngIf="(emp.empDoc_Status == 1)">Active</span>
-        <span *ngIf="(emp.empDoc_Status == 0)">Inactive</span>
+        <span *ngIf="(emp.empDoc_Status == 0)" style="color:red;">Inactive</span>
       </td>
       <td>
-        <a [attr.href]="emp.empDoc_Id">
+        <!--<a [attr.href]="emp.empDoc_Id">
           Edit
-        </a>
+        </a>-->
+        <button type="button" id="btn_Edit" class="btn btn-success" ng-click="EditDoc(emp.empDoc_Id)"><i class="fa fa-edit"></i>Edit</button>
       </td>
       <td>
-        <a [attr.href]="emp.empDoc_Id">
+        <!--<a [attr.href]="emp.empDoc_Id">
           Delete
-        </a>
+        </a>-->
+        <button type="button" id="btn_Delete" class="btn btn-danger" ng-click="DeleteDoc(emp.empDoc_Id)"><i class="fa fa-trash-o"></i>Delete</button>
       </td>
     </tr>
   </tbody>

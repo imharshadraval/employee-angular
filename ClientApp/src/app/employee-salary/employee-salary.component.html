@@ -20,14 +20,16 @@
       <td>{{ emp.empSal_StartDate  | date: 'dd/MM/yyyy'}}</td>
       <td>{{ emp.empSal_EndDate  | date: 'dd/MM/yyyy'}}</td>
       <td>
-        <a [attr.href]="emp.empSal_Id">
+        <!--<a [attr.href]="emp.empSal_Id">
           Edit
-        </a>
+        </a>-->
+        <button type="button" id="btn_Edit" class="btn btn-success" ng-click="EditSalary(emp.empSal_Id)"><i class="fa fa-edit"></i>Edit</button>
       </td>
       <td>
-        <a [attr.href]="emp.empSal_Id">
+        <!--<a [attr.href]="emp.empSal_Id">
           Delete
-        </a>
+        </a>-->
+        <button type="button" id="btn_Delete" class="btn btn-danger" ng-click="DeleteSalary(emp.empSal_Id)"><i class="fa fa-trash-o"></i>Delete</button>
       </td>
     </tr>
   </tbody>
